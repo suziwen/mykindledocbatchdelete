@@ -1,0 +1,34 @@
+{
+	"description": "batch delete docs ",
+	"icons": {
+		"16": "deletered16.ico",             
+    	"48": "deletered48.ico"
+	},
+	"name": "mykindledocbatchdelete",
+	"version": "1.0",
+	"manifest_version": 2,
+	//"background_page": "bg.html",
+	"background": { "scripts": ["background.js"] },
+	"permissions": ["tabs","https://www.amazon.com/gp/digital/fiona/manage","https://*.google.com/","http://www.baidu.com/"],
+	"page_action": {
+	    "default_icon": "deletered48.ico", // optional 
+	    "default_title": "batchdelete",    // optional; shown in tooltip 
+	    "default_popup": "popup.html"    // optional 
+  	},
+  	"content_scripts" : [
+    {
+      "matches" : [
+        "https://www.amazon.com/gp/digital/fiona/manage*",
+        "https://www.amazon.com/gp/digital/fiona/manage/*/*"
+      ],
+      "js" : ["mykindlebatch.js"],
+      "run_at" : "document_idle",
+      "all_frames" : false
+    }
+  ]
+	//"browser_action": {
+	//	"default_title": "",
+	//	"default_icon": "deletered48.ico",
+	//	"default_popup": "popup.html"
+	//}
+}
